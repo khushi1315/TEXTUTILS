@@ -1,5 +1,5 @@
 import React, { useState , useEffect} from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 
 import Navbar from './components/Navbar';
@@ -50,7 +50,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter> {/* Make sure to wrap everything inside BrowserRouter */}
+    <HashRouter> {/* Make sure to wrap everything inside HashRouter */}
       <Navbar mode={mode} about="About" toggleMode={toggleMode} />
       <Alert alert={alert} onClose={() => setAlert(null)} />
 
@@ -66,7 +66,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
