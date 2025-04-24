@@ -33,7 +33,7 @@ const About = (props) => {
         </p>
 
         <p>
-          Made with ❤️ using <strong>React</strong>, <strong>HTML</strong>, <strong>CSS</strong> & Javascript.
+          Made with ❤️ using <strong>React</strong>, <strong>HTML</strong>, <strong>CSS</strong> & JavaScript.
         </p>
       </div>
     </div>
