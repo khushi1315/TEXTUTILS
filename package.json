@@ -15,17 +15,15 @@
     "react-scripts": "^5.0.1",
     "web-vitals": "^4.2.4"
   },
-"scripts": {
-  "preinstall": "npm install -g react-scripts",  
-  "start": "react-scripts start",
-  "build": "react-scripts build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
-}
-
-,
+  "scripts": {
+    "preinstall": "npm install -g react-scripts",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -50,5 +48,8 @@
     "body-parser": "1.20.3",
     "serve-static": "2.1.0"
   },
-  "homepage": "https://github.com/khushi1315/TEXTUTILS"
+  "homepage": "https://github.com/khushi1315/TEXTUTILS",
+  "devDependencies": {
+    "eslint-config-react-app": "^7.0.1"
+  }
 }
