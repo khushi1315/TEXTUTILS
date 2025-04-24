@@ -12,7 +12,7 @@ const About = (props) => {
 
 
         <p>
-          TextUtils is a powerful and user-friendly utility tool to manipulate and analyze text efficiently.
+          TEXTUTILS is a powerful and user-friendly utility tool to manipulate and analyze text efficiently.
           Whether you're a student, developer, or writer, this app provides fast and effective text transformations.
         </p>
         <h2>✨ Features</h2>
@@ -33,7 +33,7 @@ const About = (props) => {
         </p>
 
         <p>
-          Made with ❤️ using <strong>React</strong>, <strong>HTML</strong>, <strong>CSS</strong> & modern design principles.
+          Made with ❤️ using <strong>React</strong>, <strong>HTML</strong>, <strong>CSS</strong> & Javascript.
         </p>
       </div>
     </div>
