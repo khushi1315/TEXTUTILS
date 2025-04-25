@@ -14,42 +14,42 @@ export default function TextForm(props) {
         setMatches([]);
         setCurrentMatch(0);
     }, [searchTerm]);
-    
+
     // Function to handle search and counting matches
     const handleSearch = (e) => {
         e.preventDefault();
         if (!searchTerm.trim()) {
             props.showAlert("Please enter something to search.", "warning");
-    
+
             // 🔁 Clear previous results when search is empty
             setSearchCount(0);
             setMatches([]);
             setCurrentMatch(0);
             return;
         }
-    
+
         const regex = new RegExp(searchTerm, "gi");
         const matches = [...text.matchAll(regex)];
-    
+
         if (matches.length === 0) {
             props.showAlert(`No match found for "${searchTerm}"`, "warning");
-    
+
             // 🔁 Reset count and highlight
             setSearchCount(0);
             setMatches([]);
             setCurrentMatch(0);
             return;
         }
-    
+
         setMatches(matches);
         setSearchCount(matches.length);
         setCurrentMatch(0); // 👈 Always reset to first match
         props.showAlert(`${matches.length} match(es) found for "${searchTerm}"`, "success");
-    
+
         textRef.current.setSelectionRange(matches[0].index, matches[0].index + searchTerm.length);
         textRef.current.focus();
     };
-    
+
 
     // Function to go to the next match
     const goToNextMatch = () => {
@@ -117,6 +117,16 @@ export default function TextForm(props) {
         setText(newText);
         props.showAlert("Converted to TitleCase", 'success');
     };
+    const toSentenceCase = (text) => {
+        return text
+            .toLowerCase()
+            .replace(/(^\s*\w|[\.\!\?]\s*\w)/g, (c) => c.toUpperCase());
+    };
+    const handleSentenceCase = () => {
+        let newText = toSentenceCase(text);
+        setText(newText);
+    };
+
 
     const handleRemoveSpaces = () => {
         let newText = text.split(/\s+/).join(' ').trim();
@@ -142,31 +152,31 @@ export default function TextForm(props) {
     return (
         <>
             <div className="container" >
-               
+
                 <h1>{props.heading}</h1>
                 <div className="mb-3">
-                <div className="mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        placeholder="Search..."
-                    />
-                    <button className="btn btn-success my-2" onClick={handleSearch}>Search</button>
-                    {/* Search result count */}
-                    {searchCount > 0 && (
-                        <p className="my-2">
-                            🔍 Found <strong>{searchCount}</strong> match(es) for "<strong>{searchTerm}</strong>"
-                        </p>
-                    )}
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            className="form-control"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            placeholder="Search..."
+                        />
+                        <button className="btn btn-success my-2" onClick={handleSearch}>Search</button>
+                        {/* Search result count */}
+                        {searchCount > 0 && (
+                            <p className="my-2">
+                                🔍 Found <strong>{searchCount}</strong> match(es) for "<strong>{searchTerm}</strong>"
+                            </p>
+                        )}
 
-                    {/* Navigation buttons for multiple matches */}
-                    <button className="btn btn-success" onClick={goToPreviousMatch} disabled={currentMatch === 0}>Previous</button>
-                    <button className="btn btn-success mx-2" onClick={goToNextMatch} disabled={currentMatch === matches.length - 1}>Next</button>
+                        {/* Navigation buttons for multiple matches */}
+                        <button className="btn btn-success" onClick={goToPreviousMatch} disabled={currentMatch === 0}>Previous</button>
+                        <button className="btn btn-success mx-2" onClick={goToNextMatch} disabled={currentMatch === matches.length - 1}>Next</button>
 
-                
-                </div>
+
+                    </div>
                     <textarea
                         ref={textRef}
                         className="form-control"
@@ -181,10 +191,14 @@ export default function TextForm(props) {
                 <button className="btn btn-success mx-2" onClick={handledownCLick}>Lowercase</button>
                 <button className="btn btn-success mx-2" onClick={handleClear}>Clear</button>
                 <button className="btn btn-success mx-2" onClick={handleTitleClick}>Title Case</button>
+                <button className="btn btn-success mx-2 my-1" onClick={handleSentenceCase}>
+                    Sentence Case
+                </button>
+
                 <button className="btn btn-success mx-2" onClick={handleRemoveSpaces}>Remove Extra Spaces</button>
                 <button className="btn btn-success mx-2" onClick={handleCopy}>Copy to Clipboard</button>
             </div>
-           
+
 
             <div className="container my-3">
                 <h3>Your text summary</h3>
