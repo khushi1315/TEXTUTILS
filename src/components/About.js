@@ -21,6 +21,7 @@ const About = (props) => {
           <li>🔡 Convert text to&nbsp;<strong>Lowercase</strong></li>
           <li>🧹&nbsp;<strong>Clear</strong>&nbsp;the entire&nbsp;<strong>text</strong></li>
           <li>📝 Convert to&nbsp;<strong>Title Case</strong></li>
+          <li>📝 Convert to&nbsp;<strong>Sentence Case</strong></li>
           <li>🚫&nbsp;<strong>Remove</strong>&nbsp;extra&nbsp;<strong>spaces</strong></li>
           <li>📋&nbsp;<strong>Copy</strong>&nbsp;text to&nbsp;<strong>clipboard</strong></li>
           <li>🔢&nbsp;<strong>Count</strong>&nbsp;characters and&nbsp;<strong>words</strong></li>
